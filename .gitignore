@@ -4,3 +4,5 @@ nbbuild/
 nbproject/project.properties
 /nbproject
 *.properties
+/nbproject
+nbproject/project.properties
