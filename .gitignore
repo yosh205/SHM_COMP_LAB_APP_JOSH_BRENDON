@@ -2,3 +2,5 @@
 build/
 nbbuild/
 nbproject/project.properties
+/nbproject
+*.properties
