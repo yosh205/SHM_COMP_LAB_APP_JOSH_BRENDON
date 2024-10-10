@@ -4,14 +4,10 @@
  */
 package shm_comp_lab_app_josh_brendon;
 
-import javafx.scene.layout.Pane;
-
 /**
  *
  * @author joshu
  */
-public class MainWindow extends Pane{
-    
-    
+public class Waves {
     
 }

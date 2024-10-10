@@ -5,6 +5,9 @@
 package shm_comp_lab_app_josh_brendon;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +26,10 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("mainwindowfxmlscene.fxml"));
+        stage.setTitle("Simple Harmonic Motion with a Spring");
+        stage.setScene(new Scene(root, 500, 500));
         stage.show();
     }
     
