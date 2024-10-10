@@ -6,4 +6,5 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+*.properties
 nbproject/project.properties
