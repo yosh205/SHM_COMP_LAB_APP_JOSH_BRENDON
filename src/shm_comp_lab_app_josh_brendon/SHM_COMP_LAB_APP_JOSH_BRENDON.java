@@ -4,17 +4,26 @@
  */
 package shm_comp_lab_app_josh_brendon;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  *
  * @author joshu
  */
-public class SHM_COMP_LAB_APP_JOSH_BRENDON {
+public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.show();
     }
     
 }
