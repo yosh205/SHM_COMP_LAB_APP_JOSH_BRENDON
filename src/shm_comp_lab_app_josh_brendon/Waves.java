@@ -9,5 +9,7 @@ package shm_comp_lab_app_josh_brendon;
  * @author joshu
  */
 public class Waves {
+    Equations equations = new Equations();
+    
     
 }
