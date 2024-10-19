@@ -34,6 +34,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         launch(args);
     }
 
+    boolean flag1 = true;
+    boolean flag2 = true;
+    
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -93,6 +96,24 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         });
 
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
+        
+        sinWaveMenuItem.setOnAction(actionEvent -> {
+            try {
+                flag1=!flag1;
+                setting.sineCheckBox.setSelected(flag1);
+            } catch(Exception ex) {
+                Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        cosWaveMenuItem.setOnAction(actionEvent -> {
+            try {
+                flag2=!flag2;
+                setting.cosineCheckBox.setSelected(flag2);
+            } catch(Exception ex) {
+                Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
         root.add(view.getWavePane(),0,1);
         root.add(setting.getControlPane(),0,2);
