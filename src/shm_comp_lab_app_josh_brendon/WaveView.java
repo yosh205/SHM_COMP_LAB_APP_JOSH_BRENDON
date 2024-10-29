@@ -20,10 +20,10 @@ public class WaveView {
     Path sineWavePath;
     Path cosineWavePath;
 
-    public WaveView() {
+    public WaveView() { 
         // Initialize the wave pane where the sine and cosine waves are displayed
         wavePane = new Pane();
-        wavePane.setPrefSize(600, 400);
+        wavePane.setPrefSize(200, 400);
 
         // Initialize sine and cosine wave paths
         sineWavePath = new Path();

@@ -29,7 +29,7 @@ public class WaveSettingsView{
 
         amplitudeSlider = new Slider(10, 100, 50);
         phaseSlider = new Slider(0, 2 * Math.PI, 0);
-        frequencySlider = new Slider(1, 500, 100);
+        frequencySlider = new Slider(99, 101, 100);
 
         Label amplitudeLabel = new Label("Amplitude:");
         Label phaseLabel = new Label("Phase Constant:");

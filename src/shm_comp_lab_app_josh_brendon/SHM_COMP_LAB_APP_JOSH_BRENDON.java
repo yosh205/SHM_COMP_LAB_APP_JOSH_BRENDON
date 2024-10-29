@@ -45,12 +45,15 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         // Create the view
         WaveView view = new WaveView();
+        SpringView sview = new SpringView();
+        InfoView iview = new InfoView();
+        AnimationButtonView abview = new AnimationButtonView();
         
         //setting
         WaveSettingsView setting = new WaveSettingsView();
 
         // Create the controller
-        SHMController controller = new SHMController(model,view,setting);
+        SHMController controller = new SHMController(model,view,setting,abview);
 
         // Set up the scene
         //We should use gridpane to easily separate the different panes and menubar
@@ -58,7 +61,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         BorderPane bp = new BorderPane();
         
-        root.add(bp, 0, 0);
+        //root.add(bp, 0, 0);
+        //Adding gridpane to borderpane
+        bp.setCenter(root);
         
         MenuBar menuBar = new MenuBar();
         
@@ -85,6 +90,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(wavesMenu);
         
+        //set top of borderpane as menubar
         bp.setTop(menuBar);
         
         newMenuItem.setOnAction(actionEvent -> {
@@ -116,9 +122,11 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         });
         
         root.add(view.getWavePane(),0,1);
-        root.add(setting.getControlPane(),0,2);
+        root.add(sview.getSpring(),1,1);
+        root.add(abview,0,2);
+        root.add(setting.getControlPane(),0,3);
 
-        Scene scene = new Scene(root, 600, 500);
+        Scene scene = new Scene(bp, 600, 500);
         stage.setTitle("SHM");
         stage.setScene(scene);
         stage.show();
