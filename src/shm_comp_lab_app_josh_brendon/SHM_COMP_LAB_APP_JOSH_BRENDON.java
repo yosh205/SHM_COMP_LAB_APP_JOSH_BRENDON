@@ -47,6 +47,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         WaveView view = new WaveView();
         SpringView sview = new SpringView();
         InfoView iview = new InfoView();
+        GraphView gview = new GraphView();
         AnimationButtonView abview = new AnimationButtonView();
         
         //setting
@@ -123,6 +124,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         root.add(view.getWavePane(),0,1);
         root.add(sview.getSpring(),1,1);
+        root.add(gview.getGraph(),2,1);
         root.add(abview,0,2);
         root.add(setting.getControlPane(),0,3);
 
