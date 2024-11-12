@@ -22,12 +22,25 @@ public class InfoView extends Pane{
     TextField ampinfo = new TextField();
     TextField phaseinfo = new TextField();
     TextField angfinfo = new TextField();
-    GridPane infotable = new GridPane();
+    GridPane gpane = new GridPane();
     InfoView(){
-        infotable.setPadding(new Insets(5,5,5,5));
+        gpane.setPadding(new Insets(5,5,5,5));
         ampinfo.setEditable(false);
         phaseinfo.setEditable(false);
         angfinfo.setEditable(false);
         
+        gpane.add(shminfo, 0, 0);
+        gpane.add(amp,0,1);
+        gpane.add(ampinfo,1,1);
+        gpane.add(phase,0,2);
+        gpane.add(phaseinfo,1,2);
+        gpane.add(angf,0,3);
+        gpane.add(angfinfo,1,3);
+        
+        this.getChildren().add(gpane);
+    }
+    
+    public Pane getInfoview(){
+        return this;
     }
 }
