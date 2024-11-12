@@ -54,7 +54,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         WaveSettingsView setting = new WaveSettingsView();
 
         // Create the controller
-        SHMController controller = new SHMController(model,view,setting,abview);
+        SHMController controller = new SHMController(model,view,setting,abview,gview);
 
         // Set up the scene
         //We should use gridpane to easily separate the different panes and menubar

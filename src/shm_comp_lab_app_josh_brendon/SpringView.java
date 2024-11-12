@@ -18,9 +18,6 @@ public class SpringView {
     public SpringView(){
         SpringPane = new Pane();
         SpringPane.setPrefSize(200, 400);
-        Rectangle rectangle1 = new Rectangle(50,50,100,50);
-        rectangle1.setFill(Color.BLACK);
-        SpringPane.getChildren().addAll(rectangle1);
     }
     public Pane getSpring(){
         return SpringPane;

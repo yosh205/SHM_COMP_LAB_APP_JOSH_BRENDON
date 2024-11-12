@@ -4,6 +4,9 @@
  */
 package shm_comp_lab_app_josh_brendon;
 
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Pane;
 
 /**
@@ -12,15 +15,41 @@ import javafx.scene.layout.Pane;
  */
 public class GraphView {
     Pane graphPane;
+    LineChart<Number, Number> lineChart;
+    XYChart.Series<Number, Number> sineSeries;
+    XYChart.Series<Number, Number> cosineSeries;
     
     public GraphView() {
         graphPane = new Pane();
         graphPane.setPrefSize(200, 400);
         
+        NumberAxis xAxis = new NumberAxis();
+        xAxis.setLabel("X");
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Amplitude");
+
+        lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("Sine and Cosine Waves");
+        
+        sineSeries = new XYChart.Series<>();
+        sineSeries.setName("Sine Wave");
+        cosineSeries = new XYChart.Series<>();
+        cosineSeries.setName("Cosine Wave");
+
+        lineChart.getData().addAll(sineSeries, cosineSeries);
+        graphPane.getChildren().add(lineChart);
     }
     
     public Pane getGraph() {
         return graphPane;
+    }
+    
+    public XYChart.Series<Number, Number> getSineSeries() {
+        return sineSeries;
+    }
+
+    public XYChart.Series<Number, Number> getCosineSeries() {
+        return cosineSeries;
     }
     
 }

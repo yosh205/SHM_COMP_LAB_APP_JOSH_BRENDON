@@ -20,82 +20,93 @@ public class SHMController {
     boolean cosinecheckbox = false;
     WaveModel model;
     WaveView view;
+    GraphView gview;
     WaveSettingsView setting;
     AnimationButtonView buttons;
     private double phaseShift = 0;
 
-    public SHMController(WaveModel model, WaveView view, WaveSettingsView setting, AnimationButtonView buttons) {
+    public SHMController(WaveModel model, WaveView view, WaveSettingsView setting, AnimationButtonView buttons, GraphView gview) {
         this.model = model;
         this.view = view;
         this.setting = setting;
         this.buttons = buttons;
+        this.gview = gview;
 
-        // Set up listeners for the sliders
+        // Sliders
+        
+        //Amplitude
         setting.getAmplitudeSlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setAmplitude(newVal.doubleValue());
             updateWaves();
         });
-
+        //Phase
         setting.getPhaseSlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setPhase(newVal.doubleValue());
             updateWaves();
         });
-
+        //Angular Frequency
         setting.getFrequencySlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setAngular(newVal.doubleValue());
             updateWaves();
         });
         
-        //Animation buttons
+        //Animation Buttons
+        
+        //Pause
         buttons.pausebutton.setOnAction(e->{
             pausing = true;
         });
+        //Start
         buttons.startbutton.setOnAction(e->{
             pausing=false;
         });
+        //Next Frame
         buttons.nextframe.setOnAction(e->{
             pausing=true;
-            
-            
             if(sinecheckbox==true)updateSineWave();
             if(cosinecheckbox==true)updateCosineWave();
-            
         });
+        //Last Frame
         buttons.lastframe.setOnAction(e->{
             pausing=true;
-            
-            if(sinecheckbox==true)lastSineWave();
-            if(cosinecheckbox==true)lastCosineWave();
-            
+            if(sinecheckbox==false)lastSineWave();
+            if(cosinecheckbox==false)lastCosineWave();
         });
         
-        //checkbox
+        //Checkbox
+        
+        //SineWave
         setting.getSineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();
         sinecheckbox=true;});
+        //CosineWave
         setting.getCosineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();
         cosinecheckbox=true;});
 
-        // Set up a Timeline to animate the waves
+        //Timeline
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), e -> {
             updateWaves();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        
+        if(pausing==false)timeline.play();
     }
 
-    // Method to update both sine and cosine waves
+    // Update both sine and cosine waves
     void updateWaves() {
-        if(pausing==false) showWaves();
+        if(!pausing){
+        showWaves();
+        }
     }
     
     //Show or not show paths
     void showWaves(){
+        //SineWave
         if (setting.getSineCheckBox().isSelected()) {
             updateSineWave();
         } else {
             view.getSineWavePath().getElements().clear();
         }
-
+        //Cosine Wave
         if (setting.getCosineCheckBox().isSelected()) {
             updateCosineWave();
         } else {
@@ -104,6 +115,7 @@ public class SHMController {
     }
     //Both methods that animates both waves
     //x value determines width of wave. we should make a method to fix the width
+    
     // Method to update the sine wave path
     void updateSineWave() {
         view.getSineWavePath().getElements().clear();
@@ -129,6 +141,8 @@ public class SHMController {
 
         phaseShift += 0.1;
     }
+    
+    //To show last frame of sine wave
     void lastSineWave(){
         view.getSineWavePath().getElements().clear();
         view.getSineWavePath().getElements().add(new MoveTo(0,100));
@@ -140,6 +154,8 @@ public class SHMController {
 
         phaseShift -= 0.1;
     }
+    
+    //To show last frame of cosine wave
     void lastCosineWave(){
         view.getCosineWavePath().getElements().clear();
         view.getCosineWavePath().getElements().add(new MoveTo(0,300));
@@ -152,6 +168,5 @@ public class SHMController {
         
     }
     
-}
     
-
+}

@@ -48,6 +48,8 @@ public class WaveSettingsView{
         cosineCheckBox = new CheckBox("Show Cosine Wave");
         cosineCheckBox.setSelected(true);
         
+        controlPane.add(sineCheckBox,0,3);
+        controlPane.add(cosineCheckBox, 1 ,3);
         
     }
 
