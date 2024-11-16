@@ -15,7 +15,8 @@ import javafx.scene.layout.Pane;
  * @author joshu
  */
 public class InfoView extends Pane{
-    Label shminfo = new Label("Properties");
+    WaveModel model;
+    //Label shminfo = new Label("Properties");
     Label amp = new Label("Amplitude");
     Label phase = new Label ("Phase Shift");
     Label angf = new Label("Angular Frequency");
@@ -29,13 +30,14 @@ public class InfoView extends Pane{
         phaseinfo.setEditable(false);
         angfinfo.setEditable(false);
         
-        gpane.add(shminfo, 0, 0);
-        gpane.add(amp,0,1);
-        gpane.add(ampinfo,1,1);
-        gpane.add(phase,0,2);
-        gpane.add(phaseinfo,1,2);
-        gpane.add(angf,0,3);
-        gpane.add(angfinfo,1,3);
+        //gpane.add(shminfo, 0, 0);
+        gpane.add(amp,0,0);
+        gpane.add(ampinfo,1,0);
+        gpane.add(phase,0,1);
+        gpane.add(phaseinfo,1,1);
+        gpane.add(angf,0,2);
+        gpane.add(angfinfo,1,2);
+        
         
         this.getChildren().add(gpane);
     }
@@ -43,4 +45,12 @@ public class InfoView extends Pane{
     public Pane getInfoview(){
         return this;
     }
+    
+    public void information(double amplitude, double angf, double phase){
+        ampinfo.setText(Double.toString(amplitude));
+        phaseinfo.setText(Double.toString(phase));
+        angfinfo.setText(Double.toString(angf));
+    }
+    
+    
 }

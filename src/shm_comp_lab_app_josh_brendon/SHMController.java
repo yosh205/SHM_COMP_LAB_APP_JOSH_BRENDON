@@ -21,13 +21,15 @@ public class SHMController {
     WaveModel model;
     WaveView view;
     GraphView gview;
+    InfoView iview;
     WaveSettingsView setting;
     AnimationButtonView buttons;
     private double phaseShift = 0;
 
-    public SHMController(WaveModel model, WaveView view, WaveSettingsView setting, AnimationButtonView buttons, GraphView gview) {
+    public SHMController(WaveModel model, InfoView iview, WaveView view, WaveSettingsView setting, AnimationButtonView buttons, GraphView gview) {
         this.model = model;
         this.view = view;
+        this.iview = iview;
         this.setting = setting;
         this.buttons = buttons;
         this.gview = gview;
@@ -37,16 +39,19 @@ public class SHMController {
         //Amplitude
         setting.getAmplitudeSlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setAmplitude(newVal.doubleValue());
+            iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
         });
         //Phase
         setting.getPhaseSlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setPhase(newVal.doubleValue());
+            iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
         });
         //Angular Frequency
         setting.getFrequencySlider().valueProperty().addListener((obs, oldVal, newVal) -> {
             model.setAngular(newVal.doubleValue());
+            iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
         });
         
@@ -84,6 +89,7 @@ public class SHMController {
 
         //Timeline
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), e -> {
+            iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -165,6 +171,10 @@ public class SHMController {
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
 
+        
+    }
+    
+    void updategraph(){
         
     }
     
