@@ -29,6 +29,7 @@ public class GraphView {
         yAxis.setLabel("Amplitude");
 
         lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setCreateSymbols(false);
         lineChart.setTitle("Sine and Cosine Waves");
         
         sineSeries = new XYChart.Series<>();

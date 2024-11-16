@@ -6,6 +6,7 @@ package shm_comp_lab_app_josh_brendon;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.chart.XYChart;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.util.Duration;
@@ -91,6 +92,7 @@ public class SHMController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), e -> {
             iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
+            updategraph();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         
@@ -173,8 +175,14 @@ public class SHMController {
 
         
     }
-    
+    double x=0;
     void updategraph(){
+        
+            double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
+            double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
+            gview.sineSeries.getData().add(new XYChart.Data<>(x,(300-siney)));
+            gview.cosineSeries.getData().add(new XYChart.Data<>(x,(300-cosiney)));
+        x++;
         
     }
     
