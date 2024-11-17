@@ -59,7 +59,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         // Set up the scene
         //We should use gridpane to easily separate the different panes and menubar
         GridPane root = new GridPane();
-        
+        root.getStyleClass().add("grid-pane");
         BorderPane bp = new BorderPane();
         
         //root.add(bp, 0, 0);
@@ -67,7 +67,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         bp.setCenter(root);
         
         MenuBar menuBar = new MenuBar();
-        
+            
+            menuBar.getStyleClass().add("menu-bar");
         Menu fileMenu = new Menu("File");        
         MenuItem newMenuItem = new MenuItem("New");
         MenuItem exitMenuItem = new MenuItem("Exit");
@@ -130,6 +131,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(iview.getInfoview(),1,3);
 
         Scene scene = new Scene(bp, 600, 500);
+        scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
         stage.setTitle("SHM");
         stage.setScene(scene);
         stage.show();
