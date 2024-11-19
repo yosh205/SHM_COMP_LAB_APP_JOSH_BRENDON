@@ -161,17 +161,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 throw new IllegalArgumentException("Values must be positive.");
                 }
                 
-<<<<<<< Updated upstream
-                System.out.println("Creating SpringModel...");
-SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY,model);
-System.out.println("SpringModel created: " + model);
 
-
-
-                //SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
-=======
-                SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
->>>>>>> Stashed changes
+                SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY,model);
                 SpringView viewspring = new SpringView(equilibriumY, 50);
                 SpringController controllerspring = new SpringController(modelspring, viewspring);
 

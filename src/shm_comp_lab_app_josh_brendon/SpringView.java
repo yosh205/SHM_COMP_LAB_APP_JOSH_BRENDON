@@ -20,12 +20,13 @@ public class SpringView {
     
     public SpringView(double equilibriumY, double springStartY){
         rectangle = new Rectangle(30, 30, Color.DEEPSKYBLUE);
-        rectangle.setX(185);
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setX(135);
         rectangle.setY(equilibriumY);
         
-        spring = new Line(200, springStartY, 200, equilibriumY);
-        spring.setStrokeWidth(3);
-        spring.setStroke(Color.GREY);
+        spring = new Line(150, springStartY, 150, equilibriumY);
+        spring.setStrokeWidth(2);
+        spring.setStroke(Color.BLACK);
         
         springPane = new Pane(spring, rectangle);
     }
