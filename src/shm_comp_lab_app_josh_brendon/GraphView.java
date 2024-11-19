@@ -18,6 +18,7 @@ public class GraphView {
     LineChart<Number, Number> lineChart;
     XYChart.Series<Number, Number> sineSeries;
     XYChart.Series<Number, Number> cosineSeries;
+    //NumberAxis xAxis,yAxis;
     
     public GraphView() {
         graphPane = new Pane();
