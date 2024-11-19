@@ -161,6 +161,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 throw new IllegalArgumentException("Values must be positive.");
                 }
                 
+<<<<<<< Updated upstream
                 System.out.println("Creating SpringModel...");
 SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY,model);
 System.out.println("SpringModel created: " + model);
@@ -168,13 +169,12 @@ System.out.println("SpringModel created: " + model);
 
 
                 //SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
+=======
+                SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
+>>>>>>> Stashed changes
                 SpringView viewspring = new SpringView(equilibriumY, 50);
-                
-                System.out.println("Passing SpringModel and SpringView to SpringController...");
-SpringController controllerspring = new SpringController(modelspring, viewspring);
-System.out.println("SpringController created: " + controller);
-                //SpringController controllerspring = new SpringController(modelspring, viewspring);
-                
+                SpringController controllerspring = new SpringController(modelspring, viewspring);
+
                 simulationPane.getChildren().clear();
                 simulationPane.getChildren().add(viewspring.getSpringPane());
 
@@ -199,7 +199,7 @@ System.out.println("SpringController created: " + controller);
 
         Scene scene = new Scene(bp, 900, 600);
         scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
-        stage.setTitle("SHM");
+        stage.setTitle("Simple Harmonic Motion");
         stage.setScene(scene);
         stage.show();
     }
