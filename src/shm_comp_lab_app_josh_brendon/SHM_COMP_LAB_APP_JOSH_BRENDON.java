@@ -83,15 +83,10 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //Menu for changing panes
         Menu wavesMenu = new Menu("Windows");
-        CheckMenuItem sinWaveMenuItem = new CheckMenuItem("Show Sine Wave");
-        sinWaveMenuItem.setSelected(true);  
-        CheckMenuItem cosWaveMenuItem = new CheckMenuItem("Show Cosine Wave");
-        cosWaveMenuItem.setSelected(true);
+        CheckMenuItem WaveItem = new CheckMenuItem("Show Waves");
+        WaveItem.setSelected(true);
         
-        wavesMenu.getItems().addAll(sinWaveMenuItem,
-                new SeparatorMenuItem(),
-                cosWaveMenuItem
-        );
+        wavesMenu.getItems().addAll(WaveItem);
         
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(wavesMenu);
@@ -109,23 +104,21 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
         
-        sinWaveMenuItem.setOnAction(actionEvent -> {
+        WaveItem.setOnAction(actionEvent -> {
             try {
                 flag1=!flag1;
-                setting.sineCheckBox.setSelected(flag1);
+                if(flag1){root.add(view.getWavePane(),0,1);
+                root.getChildren().remove(gview.getGraph());}
+                else {root.add(gview.getGraph(),0,1);
+                root.getChildren().remove(view.getWavePane());
+                }
+        
             } catch(Exception ex) {
                 Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         
-        cosWaveMenuItem.setOnAction(actionEvent -> {
-            try {
-                flag2=!flag2;
-                setting.cosineCheckBox.setSelected(flag2);
-            } catch(Exception ex) {
-                Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        
         
         BorderPane root1 = new BorderPane();
 
@@ -199,12 +192,12 @@ System.out.println("SpringController created: " + controller);
         
         root.add(view.getWavePane(),0,1);
         root.add(root1,1,1);
-        root.add(gview.getGraph(),2,1);
         root.add(abview,0,2);
         root.add(setting.getControlPane(),0,3);
         root.add(iview.getInfoview(),1,3);
+        root.setHgap(250);
 
-        Scene scene = new Scene(bp, 600, 500);
+        Scene scene = new Scene(bp, 900, 600);
         scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
         stage.setTitle("SHM");
         stage.setScene(scene);

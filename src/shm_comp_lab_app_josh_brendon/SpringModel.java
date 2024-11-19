@@ -23,7 +23,7 @@ public class SpringModel {
         this.mass = mass;
         this.equilibriumY = equilibriumY;
         this.position = 5; 
-        this.velocity = 0;
+        this.velocity = 5;
     }
     
     public double getSpringForce() {

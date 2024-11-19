@@ -25,8 +25,12 @@ public class GraphView {
         
         NumberAxis xAxis = new NumberAxis();
         xAxis.setLabel("X");
+        xAxis.setAutoRanging(true);
+        xAxis.setForceZeroInRange(false);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Amplitude");
+        yAxis.setAutoRanging(true);
+        yAxis.setForceZeroInRange(false);
 
         lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setCreateSymbols(false);
@@ -39,6 +43,7 @@ public class GraphView {
 
         lineChart.getData().addAll(sineSeries, cosineSeries);
         graphPane.getChildren().add(lineChart);
+        lineChart.autosize();
     }
     
     public Pane getGraph() {

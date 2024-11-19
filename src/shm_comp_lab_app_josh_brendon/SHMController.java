@@ -150,17 +150,19 @@ public class SHMController {
         if(setting.getCosineCheckBox().isSelected()){
             updatecosinegraph();
         }
-        else gview.lineChart.getData().remove(gview.cosineSeries);
+        else if(flagcosine==true){gview.lineChart.getData().add(gview.sineSeries);
+            flagcosine=false;}
+        
+        else {gview.lineChart.getData().remove(gview.cosineSeries);
+        }
     }
-    //Both methods that animates both waves
-    //x value determines width of wave. we should make a method to fix the width
     
     // Method to update the sine wave path
     void updateSineWave() {
         view.getSineWavePath().getElements().clear();
         view.getSineWavePath().getElements().add(new MoveTo(0, 100));
 
-        for (double x = 0; x <= 300; x += 1) {
+        for (double x = 0; x <= 500; x += 1) {
             double y = 100 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getSineWavePath().getElements().add(new LineTo(x, y));
         }
@@ -173,7 +175,7 @@ public class SHMController {
         view.getCosineWavePath().getElements().clear();
         view.getCosineWavePath().getElements().add(new MoveTo(0, 300));
 
-        for (double x = 0; x <= 300; x += 1) {
+        for (double x = 0; x <= 500; x += 1) {
             double y = 300 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
@@ -186,7 +188,7 @@ public class SHMController {
         view.getSineWavePath().getElements().clear();
         view.getSineWavePath().getElements().add(new MoveTo(0,100));
         
-        for (double x = 0; x <= 300; x += 1) {
+        for (double x = 0; x <= 500; x += 1) {
             double y = 100 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getSineWavePath().getElements().add(new LineTo(x, y));
         }
@@ -199,7 +201,7 @@ public class SHMController {
         view.getCosineWavePath().getElements().clear();
         view.getCosineWavePath().getElements().add(new MoveTo(0,300));
         
-        for (double x = 0; x <= 300; x += 1) {
+        for (double x = 0; x <= 500; x += 1) {
             double y = 300 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
@@ -222,6 +224,11 @@ public class SHMController {
         double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * cosinex + model.getPhase() + phaseShift);
         
         gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
+        
+        cosinex++;
     }
+    //remove data point
+    //add data point
     
 }
+
