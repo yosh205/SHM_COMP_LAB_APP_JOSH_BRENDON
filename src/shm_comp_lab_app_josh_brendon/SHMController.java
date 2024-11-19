@@ -173,7 +173,6 @@ public class SHMController {
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
 
-        
     }
     double x=0;
     void updategraph(){
@@ -185,6 +184,5 @@ public class SHMController {
         x++;
         
     }
-    
     
 }

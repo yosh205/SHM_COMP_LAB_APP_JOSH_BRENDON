@@ -9,15 +9,20 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -45,7 +50,6 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         // Create the view
         WaveView view = new WaveView();
-        SpringView sview = new SpringView();
         InfoView iview = new InfoView();
         GraphView gview = new GraphView();
         AnimationButtonView abview = new AnimationButtonView();
@@ -57,7 +61,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         SHMController controller = new SHMController(model,iview,view,setting,abview,gview);
 
         // Set up the scene
-        //We should use gridpane to easily separate the different panes and menubar
+        //use gridpane to easily separate the different panes and menubar
         GridPane root = new GridPane();
         root.getStyleClass().add("grid-pane");
         BorderPane bp = new BorderPane();
@@ -123,8 +127,78 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             }
         });
         
+        BorderPane root1 = new BorderPane();
+
+        TextField springConstantField = new TextField();
+        TextField massField = new TextField();
+        TextField equilibriumYField = new TextField();
+
+        Label springConstantLabel = new Label("Spring Constant (k):");
+        Label massLabel = new Label("Mass (m):");
+        Label equilibriumYLabel = new Label("Equilibrium Position (y):");
+
+        Button startButton = new Button("Start Simulation");
+
+        GridPane inputPane = new GridPane();
+        inputPane.setPadding(new Insets(10));
+        inputPane.setHgap(10);
+        inputPane.setVgap(10);
+
+        inputPane.add(springConstantLabel, 0, 0);
+        inputPane.add(springConstantField, 1, 0);
+        inputPane.add(massLabel, 0, 1);
+        inputPane.add(massField, 1, 1);
+        inputPane.add(equilibriumYLabel, 0, 2);
+        inputPane.add(equilibriumYField, 1, 2);
+        inputPane.add(startButton, 1, 3);
+
+        StackPane simulationPane = new StackPane();
+        simulationPane.setStyle("-fx-background-color: #f4f4f4;");
+
+        root1.setTop(inputPane);
+        root1.setCenter(simulationPane);
+
+        startButton.setOnAction(e -> {
+            try {
+                double springConstant = Double.parseDouble(springConstantField.getText());
+                double mass = Double.parseDouble(massField.getText());
+                double equilibriumY = Double.parseDouble(equilibriumYField.getText());
+                
+                if (springConstant <= 0 || mass <= 0 || equilibriumY < 0) {
+                throw new IllegalArgumentException("Values must be positive.");
+                }
+                
+                System.out.println("Creating SpringModel...");
+SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
+System.out.println("SpringModel created: " + model);
+
+
+
+                //SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
+                SpringView viewspring = new SpringView(equilibriumY, 50);
+                
+                System.out.println("Passing SpringModel and SpringView to SpringController...");
+SpringController controllerspring = new SpringController(modelspring, viewspring);
+System.out.println("SpringController created: " + controller);
+                //SpringController controllerspring = new SpringController(modelspring, viewspring);
+                
+                simulationPane.getChildren().clear();
+                simulationPane.getChildren().add(viewspring.getSpringPane());
+
+                controllerspring.start();
+
+            } catch (NumberFormatException ex) {
+                System.err.println("Error: Please enter valid numeric values.");
+                springConstantField.setStyle("-fx-border-color: red;");
+                massField.setStyle("-fx-border-color: red;");
+                equilibriumYField.setStyle("-fx-border-color: red;");
+            } catch (IllegalArgumentException ex) {
+                System.err.println("Error: " + ex.getMessage());
+            }
+        });
+        
         root.add(view.getWavePane(),0,1);
-        root.add(sview.getSpring(),1,1);
+        root.add(root1,1,1);
         root.add(gview.getGraph(),2,1);
         root.add(abview,0,2);
         root.add(setting.getControlPane(),0,3);
