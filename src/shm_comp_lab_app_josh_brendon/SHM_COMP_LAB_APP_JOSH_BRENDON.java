@@ -61,18 +61,17 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         SHMController controller = new SHMController(model,iview,view,setting,abview,gview);
 
         // Set up the scene
-        //use gridpane to easily separate the different panes and menubar
         GridPane root = new GridPane();
         root.getStyleClass().add("grid-pane");
         BorderPane bp = new BorderPane();
         
-        //root.add(bp, 0, 0);
         //Adding gridpane to borderpane
         bp.setCenter(root);
         
+        //Menu Bar
         MenuBar menuBar = new MenuBar();
             
-            menuBar.getStyleClass().add("menu-bar");
+        menuBar.getStyleClass().add("menu-bar");
         Menu fileMenu = new Menu("File");        
         MenuItem newMenuItem = new MenuItem("New");
         MenuItem exitMenuItem = new MenuItem("Exit");
@@ -82,7 +81,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 exitMenuItem
         );   
         
-        Menu wavesMenu = new Menu("Waves");
+        //Menu for changing panes
+        Menu wavesMenu = new Menu("Windows");
         CheckMenuItem sinWaveMenuItem = new CheckMenuItem("Show Sine Wave");
         sinWaveMenuItem.setSelected(true);  
         CheckMenuItem cosWaveMenuItem = new CheckMenuItem("Show Cosine Wave");
@@ -134,7 +134,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         TextField equilibriumYField = new TextField();
 
         Label springConstantLabel = new Label("Spring Constant (k):");
-        Label massLabel = new Label("Mass (m):");
+        Label massLabel = new Label("Mass (grams):");
         Label equilibriumYLabel = new Label("Equilibrium Position (y):");
 
         Button startButton = new Button("Start Simulation");
@@ -169,7 +169,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 }
                 
                 System.out.println("Creating SpringModel...");
-SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY);
+SpringModel modelspring = new SpringModel(springConstant, mass, equilibriumY,model);
 System.out.println("SpringModel created: " + model);
 
 

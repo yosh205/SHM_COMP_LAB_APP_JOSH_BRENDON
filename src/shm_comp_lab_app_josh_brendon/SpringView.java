@@ -4,7 +4,6 @@
  */
 package shm_comp_lab_app_josh_brendon;
 
-import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;

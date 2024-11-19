@@ -18,14 +18,14 @@ public class SpringController {
     Timeline timeline;
     
     public SpringController(SpringModel model, SpringView view) {
-        this.modelspring = modelspring;
-        this.viewspring = viewspring;
+        this.modelspring = model;
+        this.viewspring = view;
 
         timeline = new Timeline(new KeyFrame(Duration.millis(20), e -> {
             modelspring.update();
             double newY = modelspring.getEquilibriumY() + modelspring.getPosition();
             
-            view.updateView(newY);
+            viewspring.updateView(newY);
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
     }

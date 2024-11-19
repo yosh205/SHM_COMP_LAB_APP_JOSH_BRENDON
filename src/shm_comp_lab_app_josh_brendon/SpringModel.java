@@ -14,12 +14,15 @@ public class SpringModel {
     double position; 
     double velocity;             
     double equilibriumY;
+    double acceleration;
+    WaveModel model;
     
-    public SpringModel(double springConstant, double mass, double equilibriumY) {
-        this.springConstant = springConstant;
+    public SpringModel(double springConstant, double mass, double equilibriumY, WaveModel model) {
+        this.model=model;
+        this.springConstant = mass*model.getAngular()*model.getAngular();
         this.mass = mass;
         this.equilibriumY = equilibriumY;
-        this.position = 0; 
+        this.position = 5; 
         this.velocity = 0;
     }
     
@@ -28,7 +31,7 @@ public class SpringModel {
     }
     
     public void update() {
-        double acceleration = getSpringForce() / mass;
+        acceleration = getSpringForce() / mass;
 
         velocity += acceleration;
         position += velocity;

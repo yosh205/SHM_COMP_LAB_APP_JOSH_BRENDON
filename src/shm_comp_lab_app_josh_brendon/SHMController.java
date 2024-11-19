@@ -106,12 +106,20 @@ public class SHMController {
         }
     }
     
+    //Update both graphs
+    void updategraph(){
+        if(!pausing){
+            showGraphs();
+        }
+    }
+    
     //Show or not show paths
     void showWaves(){
         //SineWave
         if (setting.getSineCheckBox().isSelected()) {
             updateSineWave();
-        } else {
+        }
+        else {
             view.getSineWavePath().getElements().clear();
         }
         //Cosine Wave
@@ -120,6 +128,29 @@ public class SHMController {
         } else {
             view.getCosineWavePath().getElements().clear();
         }
+    }
+    
+    //Show or not show graph paths
+    void showGraphs(){
+        boolean flagsine=false;
+        boolean flagcosine=false;
+        //SineWave
+        if(setting.getSineCheckBox().isSelected()){
+            updatesinegraph();
+        }
+        else if(flagsine==true){
+            gview.lineChart.getData().add(gview.sineSeries);
+            flagsine=false;
+        }
+        else {
+            gview.lineChart.getData().remove(gview.sineSeries);
+            flagsine=true;
+        }
+        
+        if(setting.getCosineCheckBox().isSelected()){
+            updatecosinegraph();
+        }
+        else gview.lineChart.getData().remove(gview.cosineSeries);
     }
     //Both methods that animates both waves
     //x value determines width of wave. we should make a method to fix the width
@@ -174,15 +205,23 @@ public class SHMController {
         }
 
     }
-    double x=0;
-    void updategraph(){
+    //Sine Graph
+    double sinex=0;
+    void updatesinegraph(){
         
-            double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
-            double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
-            gview.sineSeries.getData().add(new XYChart.Data<>(x,(300-siney)));
-            gview.cosineSeries.getData().add(new XYChart.Data<>(x,(300-cosiney)));
-        x++;
+            double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * sinex + model.getPhase() + phaseShift);
+            
+            gview.sineSeries.getData().add(new XYChart.Data<>(sinex,(300-siney)));
+            
+        sinex++;
         
+    }
+    //Cosine Graph
+    double cosinex=0;
+    void updatecosinegraph(){
+        double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * cosinex + model.getPhase() + phaseShift);
+        
+        gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
     }
     
 }
