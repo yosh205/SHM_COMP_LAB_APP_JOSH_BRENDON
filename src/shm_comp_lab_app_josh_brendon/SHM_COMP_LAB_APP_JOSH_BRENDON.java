@@ -123,11 +123,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
-        colourSchemeItem
-        
-        
-        
+             
         BorderPane root1 = new BorderPane();
 
         TextField springConstantField = new TextField();
