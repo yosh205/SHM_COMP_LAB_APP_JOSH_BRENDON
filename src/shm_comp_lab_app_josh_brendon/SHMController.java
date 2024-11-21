@@ -206,6 +206,8 @@ public class SHMController {
         }
 
     }
+    //lowerbound
+    int lowerbound = 0;
     //Sine Graph
     double sinex=0;
     void updatesinegraph(){
@@ -213,7 +215,9 @@ public class SHMController {
             double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * sinex + model.getPhase() + phaseShift);
             
             gview.sineSeries.getData().add(new XYChart.Data<>(sinex,(300-siney)));
-      if(gview.sineSeries.getData().size()>200)gview.sineSeries.getData().remove(0, (int) (siney-199));
+      if(gview.sineSeries.getData().size()>200){
+          gview.sineSeries.getData().remove(0,lowerbound++);
+      }
         sinex++;
         
     }
@@ -223,7 +227,9 @@ public class SHMController {
         double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * cosinex + model.getPhase() + phaseShift);
         
         gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
-        if(gview.cosineSeries.getData().size()>200)gview.cosineSeries.getData().remove(0, (int) (cosiney-199));
+        if(gview.cosineSeries.getData().size()>200){
+            gview.cosineSeries.getData().remove(0, lowerbound);
+        }
         cosinex++;
     }
     //remove data point
