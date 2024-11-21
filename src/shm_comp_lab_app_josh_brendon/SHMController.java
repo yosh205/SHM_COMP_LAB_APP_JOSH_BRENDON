@@ -69,8 +69,8 @@ public class SHMController {
         //Next Frame
         buttons.nextframe.setOnAction(e->{
             pausing=true;
-            if(sinecheckbox==true)updateSineWave();
-            if(cosinecheckbox==true)updateCosineWave();
+            if(sinecheckbox==false)updateSineWave();
+            if(cosinecheckbox==false)updateCosineWave();
         });
         //Last Frame
         buttons.lastframe.setOnAction(e->{
@@ -180,7 +180,6 @@ public class SHMController {
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
 
-        phaseShift += 0.1;
     }
     
     //To show last frame of sine wave
@@ -214,7 +213,7 @@ public class SHMController {
             double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * sinex + model.getPhase() + phaseShift);
             
             gview.sineSeries.getData().add(new XYChart.Data<>(sinex,(300-siney)));
-      //if(gview.sineSeries.getData().size()>100)gview.sineSeries.getData().remove(0, (int) (siney-100));
+      if(gview.sineSeries.getData().size()>200)gview.sineSeries.getData().remove(0, (int) (siney-199));
         sinex++;
         
     }
@@ -224,7 +223,7 @@ public class SHMController {
         double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * cosinex + model.getPhase() + phaseShift);
         
         gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
-        //if(gview.cosineSeries.getData().size()>100)gview.cosineSeries.getData().remove(0, (int) (cosiney-100));
+        if(gview.cosineSeries.getData().size()>200)gview.cosineSeries.getData().remove(0, (int) (cosiney-199));
         cosinex++;
     }
     //remove data point
