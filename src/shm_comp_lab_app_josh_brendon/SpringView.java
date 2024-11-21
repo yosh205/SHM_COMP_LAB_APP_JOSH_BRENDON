@@ -16,7 +16,8 @@ import javafx.scene.shape.Rectangle;
 public class SpringView {
     Pane springPane;
     Rectangle rectangle;
-    Line spring;      
+    Line spring;
+    Line equilibriumposition;
     
     public SpringView(double equilibriumY, double springStartY){
         rectangle = new Rectangle(30, 30, Color.DEEPSKYBLUE);
@@ -28,7 +29,10 @@ public class SpringView {
         spring.setStrokeWidth(2);
         spring.setStroke(Color.BLACK);
         
-        springPane = new Pane(spring, rectangle);
+        equilibriumposition = new Line(100,equilibriumY,400,equilibriumY);
+        equilibriumposition.setStrokeWidth(2);
+        equilibriumposition.setStroke(Color.LIGHTGRAY);
+        springPane = new Pane(spring, rectangle,equilibriumposition);
     }
     
     public void updateView(double newY) {

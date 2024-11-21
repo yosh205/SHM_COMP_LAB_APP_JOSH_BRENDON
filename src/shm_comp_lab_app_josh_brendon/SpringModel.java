@@ -22,7 +22,7 @@ public class SpringModel {
         this.springConstant = mass*model.getAngular()*model.getAngular();
         this.mass = mass;
         this.equilibriumY = equilibriumY;
-        this.position = 5; 
+        this.position = 50; 
         this.velocity = 5;
     }
     

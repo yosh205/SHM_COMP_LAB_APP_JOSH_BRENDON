@@ -49,6 +49,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         WaveModel model = new WaveModel(50,0,2*Math.PI/100);
         
         // Create the view
+        StartPage begin = new StartPage();
+        AboutPage help = new AboutPage();
         WaveView view = new WaveView();
         InfoView iview = new InfoView();
         GraphView gview = new GraphView();
@@ -74,9 +76,12 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         menuBar.getStyleClass().add("menu-bar");
         Menu fileMenu = new Menu("File");        
         MenuItem newMenuItem = new MenuItem("New");
+        MenuItem helpMenuItem = new MenuItem("Help");
         MenuItem exitMenuItem = new MenuItem("Exit");
         
         fileMenu.getItems().addAll(newMenuItem,
+                new SeparatorMenuItem(),
+                helpMenuItem,
                 new SeparatorMenuItem(),
                 exitMenuItem
         );   
@@ -107,6 +112,10 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        Scene aboutscene = new Scene(help,900,600);
+        
+        helpMenuItem.setOnAction(e->{stage.setScene(aboutscene);});
 
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
         
@@ -193,9 +202,15 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.setHgap(250);
 
         Scene scene = new Scene(bp, 900, 600);
+        Scene firstscene = new Scene(begin,900,600);
+        begin.startbutton.setOnAction(e->{stage.setScene(scene);});
+        help.backbutton.setOnAction(e->{stage.setScene(scene);});
+
         scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
+
         stage.setTitle("Simple Harmonic Motion");
-        stage.setScene(scene);
+        stage.setScene(firstscene);
+
         stage.show();
     }
     
