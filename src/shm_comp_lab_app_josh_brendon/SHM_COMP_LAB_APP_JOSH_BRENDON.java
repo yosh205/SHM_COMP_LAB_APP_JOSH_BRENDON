@@ -82,9 +82,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         );   
         
         //Menu for changing panes
-        Menu wavesMenu = new Menu("Windows");
-        CheckMenuItem WaveItem = new CheckMenuItem("Show Waves");
-        WaveItem.setSelected(true);
+        Menu wavesMenu = new Menu("Graphs");
+        MenuItem WaveItem = new MenuItem("Switch Graph");
         
         wavesMenu.getItems().addAll(WaveItem);
         
