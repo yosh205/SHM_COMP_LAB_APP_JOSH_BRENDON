@@ -83,12 +83,19 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //Menu for changing panes
         Menu wavesMenu = new Menu("Graphs");
-        MenuItem WaveItem = new MenuItem("Switch Graph");
+        MenuItem waveItem = new MenuItem("Switch Graph");
         
-        wavesMenu.getItems().addAll(WaveItem);
+        wavesMenu.getItems().addAll(waveItem);
+        
+        //Menu for additional options
+        Menu optionsMenu = new Menu("Options");
+        MenuItem colourSchemeItem = new MenuItem("Appearance");
+        
+        optionsMenu.getItems().add(colourSchemeItem);
         
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(wavesMenu);
+        menuBar.getMenus().add(optionsMenu);
         
         //set top of borderpane as menubar
         bp.setTop(menuBar);
@@ -103,7 +110,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
         
-        WaveItem.setOnAction(actionEvent -> {
+        waveItem.setOnAction(actionEvent -> {
             try {
                 flag1=!flag1;
                 if(flag1){root.add(view.getWavePane(),0,1);
@@ -116,6 +123,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 Logger.getLogger(SHM_COMP_LAB_APP_JOSH_BRENDON.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        colourSchemeItem
         
         
         
