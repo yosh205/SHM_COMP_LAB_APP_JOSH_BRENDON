@@ -18,8 +18,8 @@ import javafx.util.Duration;
  */
 public class SHMController {
     boolean pausing = false;
-    boolean sinecheckbox = false;
-    boolean cosinecheckbox = false;
+    //boolean sinecheckbox = false;
+    //boolean cosinecheckbox = false;
     WaveModel model;
     WaveView view;
     GraphView gview;
@@ -70,25 +70,35 @@ public class SHMController {
         //Next Frame
         buttons.nextframe.setOnAction(e->{
             pausing=true;
-            if(sinecheckbox==false)updateSineWave();
-            if(cosinecheckbox==false)updateCosineWave();
+            graphx++;
+            if((setting.sineCheckBox.isSelected())){
+                updateSineWave();
+                updatesinegraph();}
+            if((setting.cosineCheckBox.isSelected())){
+                updateCosineWave();
+                updatecosinegraph();
+            }
         });
         //Last Frame
         buttons.lastframe.setOnAction(e->{
             pausing=true;
             phaseShift--;
-            if(sinecheckbox==false)lastSineWave();
-            if(cosinecheckbox==false)lastCosineWave();
+            if((setting.sineCheckBox.isSelected())){
+                lastSineWave();
+                removesinedatapoint();
+            }
+            if((setting.cosineCheckBox.isSelected())){
+                lastCosineWave();
+                removecosinedatapoint();
+            }
         });
         
         //Checkbox
         
         //SineWave
-        setting.getSineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();
-        sinecheckbox=true;});
+        setting.getSineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();});
         //CosineWave
-        setting.getCosineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();
-        cosinecheckbox=true;});
+        setting.getCosineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();});
 
         //Timeline////////////////////
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
@@ -208,6 +218,12 @@ public class SHMController {
         }
     }
     //remove data point
+    void removesinedatapoint(){
+       gview.sineSeries.getData().remove(((int)graphx-1),(int)graphx);
+    }
+    void removecosinedatapoint(){
+        gview.cosineSeries.getData().remove(((int)graphx-1),(int)graphx);
+    }
     //add data point
     
     //Show or not show graph paths
