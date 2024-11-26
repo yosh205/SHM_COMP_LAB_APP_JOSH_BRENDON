@@ -6,6 +6,7 @@ package shm_comp_lab_app_josh_brendon;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.Scene;
 import javafx.scene.chart.XYChart;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -27,7 +28,7 @@ public class SHMController {
     AnimationButtonView buttons;
     private double phaseShift = 0;
 
-    public SHMController(WaveModel model, InfoView iview, WaveView view, WaveSettingsView setting, AnimationButtonView buttons, GraphView gview) {
+    public SHMController(WaveModel model, InfoView iview, WaveView view, WaveSettingsView setting, AnimationButtonView buttons, GraphView gview, Scene scene) {
         this.model = model;
         this.view = view;
         this.iview = iview;
@@ -75,6 +76,7 @@ public class SHMController {
         //Last Frame
         buttons.lastframe.setOnAction(e->{
             pausing=true;
+            phaseShift--;
             if(sinecheckbox==false)lastSineWave();
             if(cosinecheckbox==false)lastCosineWave();
         });
@@ -88,11 +90,12 @@ public class SHMController {
         setting.getCosineCheckBox().selectedProperty().addListener((obs, oldVal, newVal) -> {updateWaves();
         cosinecheckbox=true;});
 
-        //Timeline
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(50), e -> {
+        //Timeline////////////////////
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
             updategraph();
+            phaseShift+=0.1;
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         
@@ -115,6 +118,7 @@ public class SHMController {
     
     //Show or not show paths
     void showWaves(){
+        
         //SineWave
         if (setting.getSineCheckBox().isSelected()) {
             updateSineWave();
@@ -130,33 +134,6 @@ public class SHMController {
         }
     }
     
-    //Show or not show graph paths
-    void showGraphs(){
-        boolean flagsine=false;
-        boolean flagcosine=false;
-        //SineWave
-        if(setting.getSineCheckBox().isSelected()){
-            updatesinegraph();
-        }
-        else if(flagsine==true){
-            gview.lineChart.getData().add(gview.sineSeries);
-            flagsine=false;
-        }
-        else {
-            gview.lineChart.getData().remove(gview.sineSeries);
-            flagsine=true;
-        }
-        
-        if(setting.getCosineCheckBox().isSelected()){
-            updatecosinegraph();
-        }
-        else if(flagcosine==true){gview.lineChart.getData().add(gview.sineSeries);
-            flagcosine=false;}
-        
-        else {gview.lineChart.getData().remove(gview.cosineSeries);
-        }
-    }
-    
     // Method to update the sine wave path
     void updateSineWave() {
         view.getSineWavePath().getElements().clear();
@@ -167,7 +144,7 @@ public class SHMController {
             view.getSineWavePath().getElements().add(new LineTo(x, y));
         }
 
-        phaseShift += 0.1;
+        //phaseShift += 0.1;
     }
 
     // Method to update the cosine wave path
@@ -192,7 +169,6 @@ public class SHMController {
             view.getSineWavePath().getElements().add(new LineTo(x, y));
         }
 
-        phaseShift -= 0.1;
     }
     
     //To show last frame of cosine wave
@@ -206,36 +182,62 @@ public class SHMController {
         }
 
     }
+    //x axis
+    double graphx=0;
     //lowerbound
     int lowerbound = 0;
     //Sine Graph
-    double sinex=0;
     void updatesinegraph(){
-        
-            double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * sinex + model.getPhase() + phaseShift);
+            double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * graphx + model.getPhase() + phaseShift);
             
-            gview.sineSeries.getData().add(new XYChart.Data<>(sinex,(300-siney)));
+            gview.sineSeries.getData().add(new XYChart.Data<>(graphx,(300-siney)));
             
-            gview.xAxis.setUpperBound(sinex+25);
       if(gview.sineSeries.getData().size()>200){
-          gview.xAxis.setLowerBound(++lowerbound);
+          gview.xAxis.setLowerBound(lowerbound);
       }
-        sinex++;
         
     }
     //Cosine Graph
-    double cosinex=0;
     void updatecosinegraph(){
-        double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * cosinex + model.getPhase() + phaseShift);
+        double cosiney = 300 + model.getAmplitude() * Math.cos(model.getAngular() * graphx + model.getPhase() + phaseShift);
         
-        gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
+        gview.cosineSeries.getData().add(new XYChart.Data<>(graphx,(300-cosiney)));
+        
         if(gview.cosineSeries.getData().size()>200){
             gview.xAxis.setLowerBound(lowerbound);
         }
-        cosinex++;
     }
     //remove data point
     //add data point
     
+    //Show or not show graph paths
+    void showGraphs(){
+        //
+        graphx++;
+        gview.xAxis.setUpperBound(graphx+25);
+        if(graphx>200) lowerbound++;
+        //SineWave
+        //If sine checkbox is selected
+        if(setting.getSineCheckBox().isSelected()){
+            gview.sineSeries.nodeProperty().getValue().visibleProperty().setValue(true);
+            updatesinegraph();
+        }
+        //If sine checkbox is not selected
+        else if(!(setting.getSineCheckBox().isSelected())){
+           gview.sineSeries.nodeProperty().getValue().visibleProperty().setValue(false);
+        }
+        
+        //Cosine
+        //If cosine checkbox is selected
+        if(setting.getCosineCheckBox().isSelected()){
+            gview.cosineSeries.nodeProperty().getValue().visibleProperty().setValue(true);
+            updatecosinegraph();
+        }
+        //If cosine checkbox is not selected
+        else if(!(setting.getCosineCheckBox().isSelected())){
+            gview.cosineSeries.nodeProperty().getValue().visibleProperty().setValue(false);
+        }
+        
+    }
 }
 

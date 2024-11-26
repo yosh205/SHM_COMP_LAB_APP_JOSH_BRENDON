@@ -41,7 +41,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
     boolean flag1 = true;
     boolean flag2 = true;
-    
+    Scene scene;
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -60,7 +60,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         WaveSettingsView setting = new WaveSettingsView();
 
         // Create the controller
-        SHMController controller = new SHMController(model,iview,view,setting,abview,gview);
+        SHMController controller = new SHMController(model,iview,view,setting,abview,gview,scene);
 
         // Set up the scene
         GridPane root = new GridPane();
@@ -206,7 +206,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(iview.getInfoview(),0,4);
         root.setHgap(250);
 
-        Scene scene = new Scene(bp, 900, 600);
+        scene = new Scene(bp, 900, 600);
         Scene firstscene = new Scene(begin,900,600);
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
