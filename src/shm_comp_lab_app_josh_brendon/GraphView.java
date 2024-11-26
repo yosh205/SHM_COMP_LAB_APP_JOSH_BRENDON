@@ -25,11 +25,11 @@ public class GraphView {
         graphPane = new Pane();
         graphPane.setPrefSize(200, 400);
         
-        //NumberAxis xAxis = new NumberAxis();
+        
         xAxis.setLabel("X");
         xAxis.setAutoRanging(false);
         xAxis.setForceZeroInRange(false);
-        //NumberAxis yAxis = new NumberAxis();
+        
         yAxis.setLabel("Amplitude");
         yAxis.setAutoRanging(true);
         yAxis.setForceZeroInRange(false);

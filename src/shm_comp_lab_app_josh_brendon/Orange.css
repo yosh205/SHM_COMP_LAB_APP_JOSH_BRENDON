@@ -1,0 +1,18 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 26, 2024, 10:53:22 a.m.
+    Author     : joshu
+*/
+
+.grid-pane{
+    -fx-background-color: #d18f80;
+}
+.menu-bar{
+    -fx-background-color: #95b9c7;
+}
+.startpage{
+    -fx-background-color: #608d91;
+}

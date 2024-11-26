@@ -94,9 +94,14 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //Menu for additional options
         Menu optionsMenu = new Menu("Options");
-        MenuItem colourSchemeItem = new MenuItem("Appearance");
+        Menu colourSchemeItem = new Menu("Appearance");
+        MenuItem bluescheme = new MenuItem("Blue");
+        MenuItem orangescheme = new MenuItem("Orange");
         
+        colourSchemeItem.getItems().addAll(bluescheme,orangescheme);
         optionsMenu.getItems().add(colourSchemeItem);
+        
+        
         
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(wavesMenu);
@@ -206,7 +211,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
 
-        scene.getStylesheets().add(getClass().getResource("newCascadeStyleSheet.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("Blue.css").toExternalForm());
+        bluescheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Blue.css").toExternalForm());});
+        orangescheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Orange.css").toExternalForm());});
 
         stage.setTitle("Simple Harmonic Motion");
         stage.setScene(firstscene);
