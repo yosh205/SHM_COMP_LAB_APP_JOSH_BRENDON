@@ -198,7 +198,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(root1,1,1);
         root.add(abview,0,2);
         root.add(setting.getControlPane(),0,3);
-        root.add(iview.getInfoview(),1,3);
+        root.add(iview.getInfoview(),0,4);
         root.setHgap(250);
 
         Scene scene = new Scene(bp, 900, 600);
