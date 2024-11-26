@@ -95,10 +95,10 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         //Menu for additional options
         Menu optionsMenu = new Menu("Options");
         Menu colourSchemeItem = new Menu("Appearance");
-        MenuItem bluescheme = new MenuItem("Blue");
-        MenuItem orangescheme = new MenuItem("Orange");
+        MenuItem lightscheme = new MenuItem("Light Mode");
+        MenuItem darkscheme = new MenuItem("Dark Mode");
         
-        colourSchemeItem.getItems().addAll(bluescheme,orangescheme);
+        colourSchemeItem.getItems().addAll(lightscheme,darkscheme);
         optionsMenu.getItems().add(colourSchemeItem);
         
         
@@ -211,9 +211,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
 
-        scene.getStylesheets().add(getClass().getResource("Blue.css").toExternalForm());
-        bluescheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Blue.css").toExternalForm());});
-        orangescheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Orange.css").toExternalForm());});
+        scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
+        lightscheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());});
+        darkscheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Dark.css").toExternalForm());});
 
         stage.setTitle("Simple Harmonic Motion");
         stage.setScene(firstscene);
