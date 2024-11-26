@@ -215,8 +215,10 @@ public class SHMController {
             double siney = 300 + model.getAmplitude() * Math.sin(model.getAngular() * sinex + model.getPhase() + phaseShift);
             
             gview.sineSeries.getData().add(new XYChart.Data<>(sinex,(300-siney)));
+            
+            gview.xAxis.setUpperBound(sinex+25);
       if(gview.sineSeries.getData().size()>200){
-          gview.sineSeries.getData().remove(0,lowerbound++);
+          gview.xAxis.setLowerBound(++lowerbound);
       }
         sinex++;
         
@@ -228,7 +230,7 @@ public class SHMController {
         
         gview.cosineSeries.getData().add(new XYChart.Data<>(cosinex,(300-cosiney)));
         if(gview.cosineSeries.getData().size()>200){
-            gview.cosineSeries.getData().remove(0, lowerbound);
+            gview.xAxis.setLowerBound(lowerbound);
         }
         cosinex++;
     }

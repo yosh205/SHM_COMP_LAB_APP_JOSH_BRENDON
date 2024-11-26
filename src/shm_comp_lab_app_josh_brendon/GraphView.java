@@ -18,17 +18,18 @@ public class GraphView {
     LineChart<Number, Number> lineChart;
     XYChart.Series<Number, Number> sineSeries;
     XYChart.Series<Number, Number> cosineSeries;
-    //NumberAxis xAxis,yAxis;
+    NumberAxis xAxis = new NumberAxis();
+    NumberAxis yAxis = new NumberAxis();
     
     public GraphView() {
         graphPane = new Pane();
         graphPane.setPrefSize(200, 400);
         
-        NumberAxis xAxis = new NumberAxis();
+        //NumberAxis xAxis = new NumberAxis();
         xAxis.setLabel("X");
-        xAxis.setAutoRanging(true);
+        xAxis.setAutoRanging(false);
         xAxis.setForceZeroInRange(false);
-        NumberAxis yAxis = new NumberAxis();
+        //NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Amplitude");
         yAxis.setAutoRanging(true);
         yAxis.setForceZeroInRange(false);
