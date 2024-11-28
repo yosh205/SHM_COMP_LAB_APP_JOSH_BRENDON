@@ -228,6 +228,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
         
         //Appearance
+        view.getWavePane().getStyleClass().add("pane");
         
         //Light mode
         lightscheme.setOnAction(e->{

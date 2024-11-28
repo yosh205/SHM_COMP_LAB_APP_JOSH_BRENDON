@@ -23,4 +23,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 .pane{
     -fx-border-color: black;
+    -fx-background-color: #72a8a4;
 }

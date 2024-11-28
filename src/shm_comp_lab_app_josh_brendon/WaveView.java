@@ -40,8 +40,8 @@ public class WaveView {
         //border
         wavePane.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         
-        //background
-        wavePane.setStyle("-fx-background-color: grey");
+        //background TESTING
+        //wavePane.setStyle("-fx-background-color: grey");
         
         // Add wave paths to the wave pane
         wavePane.getChildren().addAll(sineWavePath, cosineWavePath);
