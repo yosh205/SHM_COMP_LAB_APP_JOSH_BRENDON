@@ -210,13 +210,19 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             }
         });
         
+        //Input gridpane
+        GridPane contrl = new GridPane();
+        contrl.add(setting.getControlPane(), 0, 0);
+        contrl.add(iview.getInfoview(),1,0);
+        
         //Gridpane content
         root.add(view.getWavePane(),0,1);
         root.add(root1,1,1);
         root.add(abview,0,2);
-        root.add(setting.getControlPane(),0,3);
-        root.add(iview.getInfoview(),0,4);
+        root.add(contrl,0,3);
+        //root.add(iview.getInfoview(),1,3);
         root.setVgap(10);
+        root.setHgap(10);
         
         //Scene set up
         scene = new Scene(bp, 1000, 800);
