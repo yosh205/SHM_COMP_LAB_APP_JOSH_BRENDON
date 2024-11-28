@@ -6,13 +6,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : Nov 26, 2024, 10:53:22 a.m.
     Author     : joshu
 */
-
 .grid-pane{
     -fx-background-color: #636363;
 }
 .menu-bar{
     -fx-background-color: #3b3b3b;
 }
+.menu .label{
+    -fx-text-fill: #ffffff;
+}
+.menu-item{
+     -fx-background-color: #3b3b3b;
+}
 .startpage{
     -fx-background-color: #608d91;
+}
+.pane{
+    -fx-background-color: grey;
 }

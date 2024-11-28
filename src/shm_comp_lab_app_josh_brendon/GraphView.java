@@ -23,7 +23,7 @@ public class GraphView {
     
     public GraphView() {
         graphPane = new Pane();
-        graphPane.setPrefSize(200, 400);
+        graphPane.setPrefSize(600, 400);
         
         
         xAxis.setLabel("X");

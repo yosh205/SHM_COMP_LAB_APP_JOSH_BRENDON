@@ -6,7 +6,6 @@ package shm_comp_lab_app_josh_brendon;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
 /**
  *
@@ -20,7 +19,7 @@ public class AnimationButtonView extends HBox{
     
     AnimationButtonView(){
         this.setSpacing(10);
-        this.getChildren().addAll(startbutton,pausebutton,nextframe,lastframe);
+        this.getChildren().addAll(startbutton,pausebutton);
     }
     public Button getPause(){
         return pausebutton;
