@@ -220,7 +220,6 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(root1,1,1);
         root.add(abview,0,2);
         root.add(contrl,0,3);
-        //root.add(iview.getInfoview(),1,3);
         root.setVgap(10);
         root.setHgap(10);
         
