@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -72,10 +73,12 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //Menu Bar
         MenuBar menuBar = new MenuBar();
-            
+        menuBar.getStyleClass().add(".menu-bar");    
+        
         //MenuItems
-        //menuBar.getStyleClass().add("menu-bar");
-        Menu fileMenu = new Menu("File");        
+        Menu fileMenu = new Menu("File"); 
+        fileMenu.getStyleClass().add(".menu .label");
+        //fileMenu.setStyle(Color.BLACK);
         MenuItem newMenuItem = new MenuItem("New");
         MenuItem helpMenuItem = new MenuItem("Help");
         MenuItem exitMenuItem = new MenuItem("Exit");
@@ -209,6 +212,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             }
         });
         
+        //Gridpane content
         root.add(view.getWavePane(),0,1);
         root.add(root1,1,1);
         root.add(abview,0,2);
@@ -224,11 +228,16 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
         //CSS
         scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
+        
         //Appearance
+        
+        //Light mode
         lightscheme.setOnAction(e->{
             scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
         });
+        
+        //Dark mode
         darkscheme.setOnAction(e->{
             scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource("Dark.css").toExternalForm());
@@ -236,7 +245,6 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
         stage.setTitle("Simple Harmonic Motion");
         stage.setScene(firstscene);
-
         stage.show();
     }
     

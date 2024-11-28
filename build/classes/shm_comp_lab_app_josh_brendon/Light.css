@@ -12,6 +12,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .menu-bar{
     -fx-background-color: #95b9c7;
 }
+.menu .label{
+    -fx-text-fill: #3c7d47;
+}
 .startpage{
     -fx-background-color: #608d91;
 }
