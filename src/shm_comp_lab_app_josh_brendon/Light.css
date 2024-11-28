@@ -21,3 +21,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .startpage{
     -fx-background-color: #608d91;
 }
+.pane{
+    -fx-border-color: black;
+}

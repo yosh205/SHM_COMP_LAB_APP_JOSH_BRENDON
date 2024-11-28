@@ -77,8 +77,6 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //MenuItems
         Menu fileMenu = new Menu("File"); 
-        fileMenu.getStyleClass().add(".menu .label");
-        //fileMenu.setStyle(Color.BLACK);
         MenuItem newMenuItem = new MenuItem("New");
         MenuItem helpMenuItem = new MenuItem("Help");
         MenuItem exitMenuItem = new MenuItem("Exit");
@@ -218,11 +216,11 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(abview,0,2);
         root.add(setting.getControlPane(),0,3);
         root.add(iview.getInfoview(),0,4);
-        root.setHgap(250);
+        root.setVgap(10);
         
         //Scene set up
-        scene = new Scene(bp, 900, 600);
-        Scene firstscene = new Scene(begin,900,600);
+        scene = new Scene(bp, 1000, 800);
+        Scene firstscene = new Scene(begin,1000,800);
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
 
