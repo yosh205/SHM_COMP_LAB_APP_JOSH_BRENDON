@@ -73,7 +73,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         //Menu Bar
         MenuBar menuBar = new MenuBar();
             
-        menuBar.getStyleClass().add("menu-bar");
+        //MenuItems
+        //menuBar.getStyleClass().add("menu-bar");
         Menu fileMenu = new Menu("File");        
         MenuItem newMenuItem = new MenuItem("New");
         MenuItem helpMenuItem = new MenuItem("Help");
@@ -110,6 +111,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         //set top of borderpane as menubar
         bp.setTop(menuBar);
         
+        //New menuitem interaction
         newMenuItem.setOnAction(actionEvent -> {
             try {
                 this.start(stage);
@@ -118,12 +120,14 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             }
         });
         
+        //Help window
         Scene aboutscene = new Scene(help,900,600);
-        
+        //Help window interaction
         helpMenuItem.setOnAction(e->{stage.setScene(aboutscene);});
-
+        //Exit window interaction
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
         
+        //Changing between graph and waves
         waveItem.setOnAction(actionEvent -> {
             try {
                 flag1=!flag1;
@@ -138,18 +142,23 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             }
         });
              
+        //Spring animation pane and controls
         BorderPane root1 = new BorderPane();
-
+        
+        //Textfields spring
         TextField springConstantField = new TextField();
         TextField massField = new TextField();
         TextField equilibriumYField = new TextField();
 
+        //Labels spring
         Label springConstantLabel = new Label("Spring Constant (k):");
         Label massLabel = new Label("Mass (grams):");
         Label equilibriumYLabel = new Label("Equilibrium Position (y):");
 
+        //Button spring
         Button startButton = new Button("Start Simulation");
 
+        //Spring control input pane
         GridPane inputPane = new GridPane();
         inputPane.setPadding(new Insets(10));
         inputPane.setHgap(10);
@@ -168,7 +177,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
 
         root1.setTop(inputPane);
         root1.setCenter(simulationPane);
-
+        
+        //Start spring control
         startButton.setOnAction(e -> {
             try {
                 double springConstant = Double.parseDouble(springConstantField.getText());
@@ -205,15 +215,24 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.add(setting.getControlPane(),0,3);
         root.add(iview.getInfoview(),0,4);
         root.setHgap(250);
-
+        
+        //Scene set up
         scene = new Scene(bp, 900, 600);
         Scene firstscene = new Scene(begin,900,600);
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
 
+        //CSS
         scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
-        lightscheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());});
-        darkscheme.setOnAction(e->{scene.getStylesheets().add(getClass().getResource("Dark.css").toExternalForm());});
+        //Appearance
+        lightscheme.setOnAction(e->{
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("Light.css").toExternalForm());
+        });
+        darkscheme.setOnAction(e->{
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("Dark.css").toExternalForm());
+        });
 
         stage.setTitle("Simple Harmonic Motion");
         stage.setScene(firstscene);
