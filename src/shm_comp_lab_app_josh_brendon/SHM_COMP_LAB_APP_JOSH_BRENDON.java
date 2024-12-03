@@ -83,9 +83,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         MenuItem exitMenuItem = new MenuItem("Exit");
         
         fileMenu.getItems().addAll(newMenuItem,
-                new SeparatorMenuItem(),
+                //new SeparatorMenuItem(),
                 helpMenuItem,
-                new SeparatorMenuItem(),
+                //new SeparatorMenuItem(),
                 exitMenuItem
         );   
         
@@ -177,8 +177,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         StackPane simulationPane = new StackPane();
         simulationPane.setStyle("-fx-background-color: #f4f4f4;");
 
-        root1.setTop(inputPane);
         root1.setCenter(simulationPane);
+        root1.setTop(inputPane);
         
         //Start spring control
         startButton.setOnAction(e -> {
@@ -234,7 +234,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         
         //Scene set up
         scene = new Scene(bp, 1000, 800);
-        Scene firstscene = new Scene(begin,1000,800);
+        Scene firstscene = new Scene(begin,250,250);
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
 

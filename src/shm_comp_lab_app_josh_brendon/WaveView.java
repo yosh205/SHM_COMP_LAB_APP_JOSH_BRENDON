@@ -29,7 +29,7 @@ public class WaveView {
     public WaveView() { 
         // Initialize the wave pane where the sine and cosine waves are displayed
         wavePane = new Pane();
-        wavePane.setPrefSize(600, 405);
+        wavePane.setPrefSize(600, 410);
 
         // Initialize sine and cosine wave paths
         sineWavePath = new Path();

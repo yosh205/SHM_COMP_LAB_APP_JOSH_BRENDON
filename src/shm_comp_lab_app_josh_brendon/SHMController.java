@@ -150,7 +150,7 @@ public class SHMController {
         view.getSineWavePath().getElements().add(new MoveTo(0, 100));
 
         for (double x = 0; x <= 500; x += 1) {
-            double y = 100 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
+            double y = 105 + model.getAmplitude() * Math.sin(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getSineWavePath().getElements().add(new LineTo(x, y));
         }
 
@@ -163,7 +163,7 @@ public class SHMController {
         view.getCosineWavePath().getElements().add(new MoveTo(0, 300));
 
         for (double x = 0; x <= 500; x += 1) {
-            double y = 300 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
+            double y = 305 + model.getAmplitude() * Math.cos(model.getAngular() * x + model.getPhase() + phaseShift);
             view.getCosineWavePath().getElements().add(new LineTo(x, y));
         }
 
