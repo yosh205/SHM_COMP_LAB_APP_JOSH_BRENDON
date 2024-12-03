@@ -19,9 +19,9 @@ public class SpringModel {
     
     public SpringModel(double springConstant, double mass, double equilibriumY, WaveModel model) {
         this.model=model;
-        this.springConstant = mass*model.getAngular()*model.getAngular();
+        this.springConstant = mass*(springConstant/100)*(springConstant/100);
         this.mass = mass;
-        this.equilibriumY = equilibriumY;
+        this.equilibriumY = equilibriumY+150;
         this.position = 50; 
         this.velocity = 1;
     }

@@ -29,10 +29,11 @@ public class SpringView {
         spring.setStrokeWidth(2);
         spring.setStroke(Color.BLACK);
         
-        equilibriumposition = new Line(100,equilibriumY,200,equilibriumY);
+        equilibriumposition = new Line(100,equilibriumY+150,200,equilibriumY+150);
         equilibriumposition.setStrokeWidth(2);
         equilibriumposition.setStroke(Color.LIGHTGRAY);
         springPane = new Pane(spring, rectangle,equilibriumposition);
+        springPane.setPrefSize(300, 200);
     }
     
     public void updateView(double newY) {

@@ -22,6 +22,7 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -132,9 +133,9 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         waveItem.setOnAction(actionEvent -> {
             try {
                 flag1=!flag1;
-                if(flag1){root.add(view.getWavePane(),0,1);
+                if(flag1){root.add(view.getWavePane(),0,2);
                 root.getChildren().remove(gview.getGraph());}
-                else {root.add(gview.getGraph(),0,1);
+                else {root.add(gview.getGraph(),0,2);
                 root.getChildren().remove(view.getWavePane());
                 }
         
@@ -215,11 +216,19 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         contrl.add(setting.getControlPane(), 0, 0);
         contrl.add(iview.getInfoview(),1,0);
         
+        //Titles
+        Label wavegraph = new Label("Waves Animation");
+        Pane wavetitle = new Pane(wavegraph);
+        Label spring = new Label("Spring Animation");
+        Pane springtitle = new Pane(spring);
+        
         //Gridpane content
-        root.add(view.getWavePane(),0,1);
-        root.add(root1,1,1);
-        root.add(abview,0,2);
-        root.add(contrl,0,3);
+        root.add(wavetitle,0,1);
+        root.add(springtitle,1,1);
+        root.add(view.getWavePane(),0,2);
+        root.add(root1,1,2);
+        root.add(abview,0,3);
+        root.add(contrl,0,4);
         root.setVgap(10);
         root.setHgap(10);
         
