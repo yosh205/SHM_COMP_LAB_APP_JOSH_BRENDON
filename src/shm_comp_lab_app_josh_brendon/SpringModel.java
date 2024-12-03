@@ -21,7 +21,8 @@ public class SpringModel {
         this.model=model;
         this.springConstant = mass*(springConstant/100)*(springConstant/100);
         this.mass = mass;
-        this.equilibriumY = equilibriumY+150;
+        //Ensures that the animation starts in the middle of the pane if the user does not wish to change it
+        this.equilibriumY = equilibriumY+150; 
         this.position = 50; 
         this.velocity = 1;
     }
@@ -31,12 +32,15 @@ public class SpringModel {
     }
     
     public void update() {
+        //Calculates the acceleration
         acceleration = getSpringForce() / mass;
 
+        //Updates the velocity and position
         velocity += acceleration;
         position += velocity;
     }
     
+    //Getters to return information
     public double getPosition() {
         return position;
     }

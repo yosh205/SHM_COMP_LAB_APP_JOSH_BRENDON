@@ -187,7 +187,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 double mass = Double.parseDouble(massField.getText());
                 double equilibriumY = Double.parseDouble(equilibriumYField.getText());
                 
-                if (springConstant <= 0 || mass <= 0 || equilibriumY < 0) {
+                if (springConstant <= 0 || springConstant >= 50 || mass <= 0 || equilibriumY < 0 || equilibriumY > 100) {
                 throw new IllegalArgumentException("Values must be positive.");
                 }
                 
@@ -233,7 +233,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         root.setHgap(10);
         
         //Scene set up
-        scene = new Scene(bp, 1000, 800);
+        scene = new Scene(bp, 930, 640);
         Scene firstscene = new Scene(begin,250,250);
         begin.startbutton.setOnAction(e->{stage.setScene(scene);});
         help.backbutton.setOnAction(e->{stage.setScene(scene);});
@@ -255,7 +255,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
             scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource("Dark.css").toExternalForm());
         });
-
+        
+        stage.setResizable(false);
         stage.setTitle("Simple Harmonic Motion");
         stage.setScene(firstscene);
         stage.show();

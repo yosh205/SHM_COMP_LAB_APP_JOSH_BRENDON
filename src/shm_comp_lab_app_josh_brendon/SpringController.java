@@ -20,11 +20,14 @@ public class SpringController {
     public SpringController(SpringModel model, SpringView view) {
         this.modelspring = model;
         this.viewspring = view;
-
+        
+        //Sets up the animation
         timeline = new Timeline(new KeyFrame(Duration.millis(20), e -> {
+            //updates the model
             modelspring.update();
-            double newY = modelspring.getEquilibriumY() + modelspring.getPosition();
             
+            //Updates the view
+            double newY = modelspring.getEquilibriumY() + modelspring.getPosition();
             viewspring.updateView(newY);
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);

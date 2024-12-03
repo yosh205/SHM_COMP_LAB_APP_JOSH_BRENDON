@@ -15,8 +15,11 @@ import javafx.scene.text.Text;
  */
 public class AboutPage extends Pane{
     Text firstpart = new Text("This is the help page where all application features are explained. More information provided in the user guide");
-    Text mainpart = new Text("Simple Harmonic Motion of a Spring is a physics concept of a periodic movement of an object. In this program, springs are used to represent this periodic movement.\nIn addition, an animation of the waves and its representing graph is also used.\n\nWave Animation:\nAmplitude affects the height.\nPhase Shift lets the user move the wave left or right.\nAngular Frequency affects the period. \n\n Spring animation:\n"
-            + "Spring Constant affects stiffness of spring \nMass affects how spring moves regarding to gravity\nEquilibrium Position places the line where periodic movement will happen");
+    Text mainpart = new Text("Simple Harmonic Motion of a Spring is a physics concept of a periodic movement of an object. In this program, springs are used to represent this periodic movement.\nIn addition, an animation of the waves and its representing graph is also used."
+            + "\n -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \nWave Animation:\nAmplitude affects the height.\nPhase Shift lets the user move the wave left or right.\nAngular Frequency affects the period. "
+            + "\n -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n Spring animation:\n"
+            + "Spring Constant affects stiffness of spring \nMass affects how spring moves regarding to gravity\nEquilibrium Position places the line where periodic movement will happen"
+            + "\n --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     Button backbutton = new Button("Back");
     
     AboutPage(){
