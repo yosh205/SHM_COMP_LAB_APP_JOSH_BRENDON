@@ -193,7 +193,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 double mass = Double.parseDouble(massField.getText());
                 double equilibriumY = Double.parseDouble(equilibriumYField.getText());
                 
-                if (springConstant <= 0 || springConstant >= 50 || mass <= 0 || equilibriumY < 0 || equilibriumY > 100) {
+                if (springConstant <= 0 || springConstant >= 50 || mass <= 0 || equilibriumY < 0 || equilibriumY > 150) {
                 throw new IllegalArgumentException("Values must be positive OR spring constant must be between 0 and 50 and equilibrium position needs to be between 0 and 100.");
                 }
                 

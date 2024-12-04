@@ -102,11 +102,11 @@ public class SHMController {
 
         //Timeline////////////////////
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
+            if(!pausing){iview.information(model.getAmplitude(), model.getAngular(), model.getPhase());
             updateWaves();
             updategraph();
             phaseShift+=0.1;
-        }));
+            }}));
         timeline.setCycleCount(Timeline.INDEFINITE);
         
         if(pausing==false)timeline.play();

@@ -26,7 +26,7 @@ public class GraphView {
         graphPane.setPrefSize(600, 400);
         
         
-        xAxis.setLabel("X");
+        xAxis.setLabel("Time");
         xAxis.setAutoRanging(false);
         xAxis.setForceZeroInRange(false);
         

@@ -24,7 +24,7 @@ public class SpringModel {
         //Ensures that the animation starts in the middle of the pane if the user does not wish to change it
         this.equilibriumY = equilibriumY+150; 
         this.position = 50; 
-        this.velocity = 1;
+        this.velocity = 10;
     }
     
     public double getSpringForce() {
