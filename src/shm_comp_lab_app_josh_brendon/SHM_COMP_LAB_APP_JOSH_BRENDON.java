@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -65,12 +66,16 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         SHMController controller = new SHMController(model,iview,view,setting,abview,gview,scene);
 
         // Set up the scene
-        GridPane root = new GridPane();
+        GridPane root = new GridPane(); //This is all waves animation
+        GridPane springarea = new GridPane();
+        springarea.setPadding(new Insets(15,0,0,0));
         root.getStyleClass().add("grid-pane");
+        springarea.getStyleClass().add("grid-pane");
         BorderPane bp = new BorderPane();
         
         //Adding gridpane to borderpane
         bp.setCenter(root);
+        bp.setRight(springarea);
         
         //Menu Bar
         MenuBar menuBar = new MenuBar();
@@ -175,7 +180,8 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         inputPane.add(startButton, 1, 3);
 
         StackPane simulationPane = new StackPane();
-        simulationPane.setStyle("-fx-background-color: #f4f4f4;");
+        //simulationPane.setStyle("-fx-background-color: #f4f4f4;");
+        simulationPane.getStyleClass().add("grid-pane");
 
         root1.setCenter(simulationPane);
         root1.setTop(inputPane);
@@ -188,7 +194,7 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
                 double equilibriumY = Double.parseDouble(equilibriumYField.getText());
                 
                 if (springConstant <= 0 || springConstant >= 50 || mass <= 0 || equilibriumY < 0 || equilibriumY > 100) {
-                throw new IllegalArgumentException("Values must be positive.");
+                throw new IllegalArgumentException("Values must be positive OR spring constant must be between 0 and 50 and equilibrium position needs to be between 0 and 100.");
                 }
                 
 
@@ -222,15 +228,19 @@ public class SHM_COMP_LAB_APP_JOSH_BRENDON extends Application{
         Label spring = new Label("Spring Animation");
         Pane springtitle = new Pane(spring);
         
-        //Gridpane content
+        //Gridpane content for waves animation
         root.add(wavetitle,0,1);
-        root.add(springtitle,1,1);
+        //root.add(springtitle,1,1);
         root.add(view.getWavePane(),0,2);
-        root.add(root1,1,2);
+        //root.add(root1,1,2);
         root.add(abview,0,3);
         root.add(contrl,0,4);
         root.setVgap(10);
         root.setHgap(10);
+        
+        //Content for spring animation
+        springarea.add(springtitle,0,1);
+        springarea.add(root1,0,2);
         
         //Scene set up
         scene = new Scene(bp, 930, 640);

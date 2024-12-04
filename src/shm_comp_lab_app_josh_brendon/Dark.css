@@ -15,6 +15,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .menu .label{
     -fx-text-fill: #ffffff;
 }
+.context-menu{
+    -fx-background-color: #3b3b3b;
+}
 .menu-item{
      -fx-background-color: #3b3b3b;
 }
