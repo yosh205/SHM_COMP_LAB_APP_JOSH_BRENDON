@@ -19,7 +19,7 @@ public class SpringModel {
     
     public SpringModel(double springConstant, double mass, double equilibriumY, WaveModel model) {
         this.model=model;
-        this.springConstant = mass*(springConstant/100)*(springConstant/100);
+        this.springConstant = springConstant;
         this.mass = mass;
         //Ensures that the animation starts in the middle of the pane if the user does not wish to change it
         this.equilibriumY = equilibriumY+150; 
